@@ -29,7 +29,6 @@ UTC = Zone(5,False,'UTC')
 region= os.environ.get("region")
 instances = os.environ.get("instances").split(",")
 
-# Setting the retention period to 6 days
 retentionDays = int(os.environ.get("retentionDays"));
 outerLimitDays = int(os.environ.get("outerLimitDays"));
 retentionDate = datetime.now(UTC) - timedelta(days=retentionDays)

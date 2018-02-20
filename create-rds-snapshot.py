@@ -11,8 +11,8 @@ import logging
 import boto3
 import os
  
-region= os.environ.get("region")
-instances = os.environ.get("instances").split(",")
+region= os.environ.get("region"); 
+instances = os.environ.get("instances").split(",");
  
 print('Loading function')
  
@@ -21,7 +21,7 @@ def lambda_handler(event, context):
     for instance in instances:
         try:
             timestamp1 = str(datetime.datetime.now().strftime('%Y-%m-%d-%H-%-M-%S')) + "lambda-snap"
-            snapshot = "{0}-{1}-{2}".format("mysnapshot", instance,timestamp1)
+            snapshot = "{0}-{1}-{2}".format("auto-manual", instance,timestamp1)
             response = source.create_db_snapshot(DBSnapshotIdentifier=snapshot, DBInstanceIdentifier=instance)
             print(response)
         except botocore.exceptions.ClientError as e:
